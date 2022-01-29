@@ -14,14 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let startVC = StartViewController()
-        self.window?.rootViewController = startVC
+        let mainTabBarVC = MainTabBarViewController()
+        self.window?.rootViewController = mainTabBarVC
         self.window?.makeKeyAndVisible()
         return true
     }
-
-    
-
-
 }
 

@@ -1,24 +1,24 @@
 //
-//  MainTabBarRouter.swift
-//  MainTabBatTestApp
+//  RAActionsRouter.swift
+//  ActionsTestApp
 //
-//  Created by Раис Аглиуллов on 22.01.2022.
+//  Created by Раис Аглиуллов on 29.01.2022.
 //  Copyright (c) 2022 Раис Аглиуллов. All rights reserved.
 
 import UIKit
 
-@objc protocol MainTabBarRoutingLogic {
+@objc protocol RAActionsRoutingLogic {
     //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol MainTabBarDataPassing {
-    var dataStore: MainTabBarDataStore? { get }
+protocol RAActionsDataPassing {
+    var dataStore: RAActionsDataStore? { get }
 }
 
-class MainTabBarRouter: NSObject, MainTabBarRoutingLogic, MainTabBarDataPassing {
+class RAActionsRouter: NSObject, RAActionsRoutingLogic, RAActionsDataPassing {
     
-    weak var viewController: MainTabBarViewController?
-    var dataStore: MainTabBarDataStore?
+    weak var viewController: RAActionsViewController?
+    var dataStore: RAActionsDataStore?
     
     // MARK: Routing
     
@@ -39,14 +39,14 @@ class MainTabBarRouter: NSObject, MainTabBarRoutingLogic, MainTabBarDataPassing 
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: MainTabBarViewController, destination: SomewhereViewController)
+    //func navigateToSomewhere(source: RAActionsViewController, destination: SomewhereViewController)
     //{
     //  source.show(destination, sender: nil)
     //}
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: MainTabBarDataStore, destination: inout SomewhereDataStore)
+    //func passDataToSomewhere(source: RAActionsDataStore, destination: inout SomewhereDataStore)
     //{
     //  destination.name = source.name
     //}

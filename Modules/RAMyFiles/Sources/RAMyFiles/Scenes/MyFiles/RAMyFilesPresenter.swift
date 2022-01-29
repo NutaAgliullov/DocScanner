@@ -8,7 +8,8 @@
 import UIKit
 
 protocol RAMyFilesPresentationLogic {
-    func presentInitialSetup(response: RAMyFilesModel.InitialSetup.Response)
+    func presentNavigationTitle()
+    func presentTabbarItem()
     func presentFetchedContent(response: RAMyFilesModel.FetchContent.Response)
 }
 
@@ -48,9 +49,19 @@ class RAMyFilesPresenter {
 
 //MARK: - RAMyFilesPresentationLogic
 extension RAMyFilesPresenter: RAMyFilesPresentationLogic {
-    func presentInitialSetup(response: RAMyFilesModel.InitialSetup.Response) {
-        let viewModel = RAMyFilesModel.InitialSetup.ViewModel()
-        self.viewController?.displayInitialSetup(viewModel: viewModel)
+    func presentTabbarItem() {
+        let title: String = "My files"
+        let image: UIImage? = UIImage.init(systemName: "tray.full")
+        let selectedImage: UIImage? = UIImage.init(systemName: "tray.full.fill")
+        
+        let viewModel = RAMyFilesModel.SetupTabbarItem.ViewModel(title: title, image: image, selectedImage: selectedImage)
+        self.viewController?.displayTabbarItem(viewModel: viewModel)
+    }
+    
+    func presentNavigationTitle() {
+        let title: String = "Doc scanner ☭"
+        let viewModel = RAMyFilesModel.FetchNavigationTitle.ViewModel(title: title)
+        self.viewController?.dislayNavigationTitle(viewModel: viewModel)
     }
     
     func presentFetchedContent(response: RAMyFilesModel.FetchContent.Response) {
@@ -58,5 +69,4 @@ extension RAMyFilesPresenter: RAMyFilesPresentationLogic {
         let viewModel = RAMyFilesModel.FetchContent.ViewModel(sections: sections)
         self.viewController?.displayFetchedContent(viewModel: viewModel)
     }
-
 }

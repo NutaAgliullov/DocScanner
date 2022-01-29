@@ -8,8 +8,9 @@
 import UIKit
 
 protocol RAMyFilesDisplayLogic: AnyObject {
-    func displayInitialSetup(viewModel: RAMyFilesModel.InitialSetup.ViewModel)
+    func dislayNavigationTitle(viewModel: RAMyFilesModel.FetchNavigationTitle.ViewModel)
     func displayFetchedContent(viewModel: RAMyFilesModel.FetchContent.ViewModel)
+    func displayTabbarItem(viewModel: RAMyFilesModel.SetupTabbarItem.ViewModel)
 }
 
 class RAMyFilesViewController: UIViewController {
@@ -44,14 +45,18 @@ class RAMyFilesViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.initialSetup()
+        self.fetchNavigationTitle()
+        self.setupTabbarItem()
         self.fetchContent()
     }
     
     //MARK: - Interactor requests
-    private func initialSetup() {
-        let request = RAMyFilesModel.InitialSetup.Request()
-        self.interactor?.initialSetup(request: request)
+    private func fetchNavigationTitle() {
+        self.interactor?.fetchNavigationTitle()
+    }
+    
+    private func setupTabbarItem() {
+        self.interactor?.setupTabbarItem()
     }
     
     private func fetchContent() {
@@ -62,15 +67,19 @@ class RAMyFilesViewController: UIViewController {
 
 //MARK: - RAMyFilesDisplayLogic
 extension RAMyFilesViewController: RAMyFilesDisplayLogic {
-    func displayInitialSetup(viewModel: RAMyFilesModel.InitialSetup.ViewModel) {
-        //self.view.backgroundColor = UIColor.red
+    func dislayNavigationTitle(viewModel: RAMyFilesModel.FetchNavigationTitle.ViewModel) {
+        self.title = viewModel.title
+    }
+    
+    func displayTabbarItem(viewModel: RAMyFilesModel.SetupTabbarItem.ViewModel) {
+        let item = UITabBarItem(title: viewModel.title, image: viewModel.image, selectedImage: viewModel.selectedImage)
+        self.tabBarItem = item
     }
     
     func displayFetchedContent(viewModel: RAMyFilesModel.FetchContent.ViewModel) {
         self.displayedSections = viewModel.sections
         self.collectionView.reloadData()
     }
-
 }
 
 //MARK: - Layout helpers
@@ -93,7 +102,7 @@ extension RAMyFilesViewController {
     }
 }
 
-//MARK: -
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension RAMyFilesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.displayedSections.count

@@ -8,7 +8,8 @@
 import UIKit
 
 protocol RAMyFilesBusinessLogic {
-    func initialSetup(request: RAMyFilesModel.InitialSetup.Request)
+    func fetchNavigationTitle()
+    func setupTabbarItem()
     func fetchContent(request: RAMyFilesModel.FetchContent.Request)
 }
 
@@ -19,14 +20,16 @@ protocol RAMyFilesDataStore {
 class RAMyFilesInteractor: RAMyFilesDataStore {
     var presenter: RAMyFilesPresentationLogic?
     var worker: RAMyFilesWorker?
-    
 }
 
 //MARK: - RAMyFilesBusinessLogic
 extension RAMyFilesInteractor: RAMyFilesBusinessLogic {
-    func initialSetup(request: RAMyFilesModel.InitialSetup.Request) {
-        let response = RAMyFilesModel.InitialSetup.Response()
-        self.presenter?.presentInitialSetup(response: response)
+    func setupTabbarItem() {
+        self.presenter?.presentTabbarItem()
+    }
+    
+    func fetchNavigationTitle() {
+        self.presenter?.presentNavigationTitle()
     }
     
     func fetchContent(request: RAMyFilesModel.FetchContent.Request) {

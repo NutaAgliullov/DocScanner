@@ -4,28 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "RAMyFiles",
+    name: "RAActions",
     platforms: [
         .iOS(.v15)
     ],
     products: [
         .library(
-            name: "RAMyFiles",
-            targets: ["RAMyFiles"]),
+            name: "RAActions",
+            targets: ["RAActions"]),
     ],
     dependencies: [
-        .package(path: "../RAUI"),
-        .package(path: "../RAFoundation"),
+        .package(path: "/Users/raisagliullov/Work/HomeProjects/SharedModules/RAUI"),
+        .package(path: "/Users/raisagliullov/Work/HomeProjects/SharedModules/RAFoundation"),
     ],
     targets: [
         .target(
-            name: "RAMyFiles",
+            name: "RAActions",
             dependencies: [
                 "RAUI",
                 "RAFoundation"
-            ]),
-        .testTarget(
-            name: "RAMyFilesTests",
-            dependencies: ["RAMyFiles"]),
+            ])
     ]
 )

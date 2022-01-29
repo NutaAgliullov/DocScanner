@@ -1,5 +1,5 @@
 //
-//  RAMyFilesModels.swift
+//  RAMyFilesModel.swift
 //  MyFilesTestApp
 //
 //  Created by Раис Аглиуллов on 22.01.2022.
@@ -31,16 +31,10 @@ enum RAMyFilesModel {
         let cells: [DisplayedCell]
     }
     
-    enum InitialSetup {
-        struct Request {
-        }
-        
-        struct Response {
-        }
-        
+    enum FetchNavigationTitle {
         struct ViewModel {
+            let title: String
         }
-        
     }
     
     enum FetchContent {
@@ -52,6 +46,14 @@ enum RAMyFilesModel {
         
         struct ViewModel {
             let sections: [DisplayedSection]
+        }
+    }
+    
+    enum SetupTabbarItem {
+        struct ViewModel {
+            let title: String
+            let image: UIImage?
+            let selectedImage: UIImage?
         }
     }
     

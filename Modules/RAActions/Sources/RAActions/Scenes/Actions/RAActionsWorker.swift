@@ -1,13 +1,13 @@
 //
-//  MainTabBarWorker.swift
-//  MainTabBatTestApp
+//  RAActionsWorker.swift
+//  ActionsTestApp
 //
-//  Created by Раис Аглиуллов on 22.01.2022.
+//  Created by Раис Аглиуллов on 29.01.2022.
 //  Copyright (c) 2022 Раис Аглиуллов. All rights reserved.
 
 import UIKit
 
-class MainTabBarWorker {
+class RAActionsWorker {
     
     func doSomeWork() {
     }

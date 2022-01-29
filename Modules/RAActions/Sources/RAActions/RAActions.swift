@@ -1,19 +1,20 @@
 import UIKit
 
-public struct RAMyFiles {
+public struct RAActions {
     public init() {}
-    
-    public func makeMyFilesViewController() -> UIViewController {
-        let viewController = RAMyFilesViewController()
-        let interactor = RAMyFilesInteractor()
-        let presenter = RAMyFilesPresenter()
-        let router = RAMyFilesRouter()
+
+    public func makeActionsViewController() -> UIViewController {
+        let viewController = RAActionsViewController()
+        let interactor = RAActionsInteractor()
+        let presenter = RAActionsPresenter()
+        let router = RAActionsRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+        viewController.view.setNeedsLayout()
         return viewController
     }
 }
