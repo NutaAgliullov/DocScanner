@@ -24,26 +24,34 @@ class MainTabBarViewController: UITabBarController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.initialSetup()
+        self.addControllers()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.initialSetup()
+        self.addControllers()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        self.tabBar.tintColor = UIColor.black
+            
+        self.setupTabbar()
     }
     
-    private func initialSetup() {
+    private func addControllers() {
         var viewControllers: [UIViewController] = self.viewControllers ?? []
         let myFilesVC = self.getMyFilesVC()
         let actionsVC = self.getActionsVC()
         viewControllers.append(contentsOf: [myFilesVC, actionsVC])
         self.viewControllers = viewControllers
+    }
+    
+    private func setupTabbar() {
+        self.tabBar.layer.borderWidth = 0.3
+        self.tabBar.layer.borderColor = UIColor.raGray.cgColor
+        self.tabBar.clipsToBounds = true
+        self.tabBar.tintColor = UIColor.black
     }
 }
 
